@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>MicroCopy Master - M.J.J.B. PDF Tool</title>
+    <meta name="description" content="Create professional MicroCopies by merging and resizing images into A4 PDF format. A simple, fast, and free tool by M.J.J.B.">
+    <meta name="keywords" content="MicroCopy, PDF Generator, Image to PDF, MJJ Tool, A4 PDF, Image Merge, PDF Maker, Easy PDF Tool, Free PDF Tool">
+    <meta name="author" content="M.J.J.B.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="MicroCopy Master - MJJ PDF Tool">
+    <meta property="og:description" content="Effortlessly generate PDFs from images. Perfect for creating professional MicroCopies. Developed by M.J.J.B.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/motijimmy/M.J.J.B./main/MJJB8w.svg">
+    <meta property="og:url" content="https://your-github-page-url.github.io">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2e1a47, #a74c9e); /* Dark purple to soft pink gradient */
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the footer stays at the bottom */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 20px 0; /* Adjusted for spacing */
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Shadow for contrast */
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #imageForm {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0 auto; /* Center the form */
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background for form */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+            max-width: 600px;
+            width: 90%;
+            flex: 1; /* Allow it to grow and keep footer at bottom */
+        }
+
+        /* Styling for the input fields */
+        #images, #pdfName {
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid #fff;
+            width: 80%;
+            max-width: 500px;
+            background-color: #3e2a4d; /* Dark purple background */
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        #images:focus, #pdfName:focus {
+            border-color: #f7a3d2; /* Light pink border on focus */
+            background-color: #301b38; /* Darker purple background on focus */
+        }
+
+    /* Preview container styling */
+#previewContainer {
+    display: none; /* Completely hidden by default */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+    width: 80%;
+    max-width: 600px;
+    border: 1px solid #f7a3d2; /* Light pink border */
+    padding: 12px;
+    background-color: #4b2e53;
+    border-radius: 8px;
+    justify-items: center; /* Center the images inside the grid */
+    margin-left: auto;
+    margin-right: auto; /* Center the container */
+}
+
+        #previewContainer img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            max-height: 200px;
+            border: 1px solid #fff;
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Soft shadow for images */
+        }
+
+        /* PDF Options and Buttons */
+        #pdfOptions {
+            display: none;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: white;
+            color: #4b2e53;
+            border: 1px #f7a3d2;
+            padding: 10px 40px;
+            border-radius: 6px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Button shadow */
+            margin-top: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #f0c220;
+            transform: scale(1.05);
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 10px #f7a3d2; /* Pinkish glow on focus */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #2e1a47; /* Matches the main gradient */
+            color: #fff;
+            text-align: center;
+            padding: 4px 0;
+            margin-top: 26px; /* Push footer to the bottom */
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 400; 
+            letter-spacing: 0.5px
+        }
+
+        footer img {
+            width: 152px; /* Adjust logo size */
+            height: auto;
+            display: block;
+            margin: 0 auto 0px; /* Center logo with spacing */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.3rem; /* Smaller text for copyright */
+                 }
+  </style>
+</head>
+<body>
+    <h1>MicroCopy-Master By <u>M.J.J.B</u>.</h1>
+    <form id="imageForm">
+        <input type="file" accept="image/*" multiple id="images" max="6" onchange="checkImages()"><br><br>
+        <div id="previewContainer"></div>
+        <div id="pdfOptions">
+            <label for="pdfName">Enter PDF File Name:</label>
+            <input type="text" id="pdfName" placeholder="Enter PDF name" /><br><br>
+            <button type="button" onclick="generatePDF()"><b>Generate PDF</b></button>
+        </div>
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        <b><p>&copy; <span id="year"></span> M.J.J.B. All Rights Reserved.</p></b>
+      <img src="https://raw.githubusercontent.com/motijimmy/M.J.J.B./main/MJJB8w.svg">
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+   
+   document.getElementById('year').textContent = new Date().getFullYear();
+   
+   function resetGenerateButton() {
+    const button = document.querySelector('button');
+    button.textContent = 'Generate PDF'; // Reset button text
+}
+
+function checkImages() {
+    const images = document.getElementById('images').files;
+    const pdfOptions = document.getElementById('pdfOptions');
+    const previewContainer = document.getElementById('previewContainer');
+    const generateButton = document.querySelector('button');
+
+    resetGenerateButton(); // Reset button text when images change
+
+    if (images.length > 6) {
+        alert('You can only upload up to 6 images.');
+        document.getElementById('images').value = ''; // Clear the file input
+        pdfOptions.style.display = 'none';
+        previewContainer.style.display = 'none';
+        generateButton.disabled = true;
+        return;
+    }
+
+    if (images.length > 0) {
+        pdfOptions.style.display = 'block';
+        previewContainer.style.display = 'grid';
+        generateButton.disabled = false;
+    } else {
+        pdfOptions.style.display = 'none';
+        previewContainer.style.display = 'none';
+        generateButton.disabled = true;
+    }
+
+    previewContainer.innerHTML = "";
+
+    Array.from(images).forEach((image) => {
+        const imgElement = document.createElement('img');
+        loadImage(image).then(img => {
+            imgElement.src = img.src;
+            previewContainer.appendChild(imgElement);
+        });
+    });
+}
+
+// Event listener for the PDF name input field
+document.getElementById('pdfName').addEventListener('input', resetGenerateButton); // Reset button text on file name change
+
+function loadImage(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+async function generatePDF() {
+    const images = document.getElementById('images').files;
+    const pdfName = document.getElementById('pdfName').value || ''; // Default name if not provided
+
+    if (images.length === 0) {
+        alert("Please select images before generating the PDF.");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit: 'in', format: 'a4' });
+
+    // Spacing between rows
+    const rowSpacing = 0.2;
+
+    // Image positions and sizes with spacing
+    const positions = [
+        { x: 0, y: 0, width: 3.77, height: 3.77 },
+        { x: 4.5, y: 0, width: 3.77, height: 3.77 },
+        { x: 0, y: 3.77 + rowSpacing, width: 3.77, height: 3.77 },
+        { x: 4.5, y: 3.77 + rowSpacing, width: 3.77, height: 3.77 },
+        { x: 0, y: (3.77 * 2) + (rowSpacing * 2), width: 3.41, height: 3.41 },
+        { x: 4.86, y: (3.77 * 2) + (rowSpacing * 2), width: 3.41, height: 3.41 }
+    ];
+
+    for (let i = 0; i < images.length; i++) {
+        const img = await loadImage(images[i]);
+        const { x, y, width, height } = positions[i];
+        pdf.addImage(img, 'JPEG', x, y, width, height);
+    }
+    // Save the PDF with the given name
+    pdf.save(pdfName + ' M.J.J.B. ');
+ // Change the button text to "Generated PDF!"
+    const button = document.querySelector('button');
+    button.textContent = 'Generated PDF!';
+}
+ // Prevent right-click, Ctrl+U, and Developer Tools shortcuts
+ document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'J' || e.key === 'j')) {
+        e.preventDefault();
+        alert('Viewing source code is disabled');
+    }
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();
+        alert('Developer Tools are disabled');
+    }
+});
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Right-click is disabled');
+});
+
+</script>
+</body>
+</html>
