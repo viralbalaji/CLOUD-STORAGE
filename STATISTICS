@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta name="description" content="An easy-to-use online statistical calculator for calculating mean, median, mode, standard deviation, and more from frequency tables and individual data sets.">
+    <meta name="keywords" content="statistical calculator, mean, median, mode, standard deviation, frequency distribution, statistics, math calculator, online statistics tool, class intervals, data analysis">
+    <meta name="author" content="M.J.J.B.-INTERNATIONAL">
+
+    <link rel="icon" href="https://raw.githubusercontent.com/MJJB-INTERNATIONAL/MJJBimge/1baef02cf41529aff671d9ce9350107ecb6d127c/MJ8.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.J.J.B. STATISTICS CALCULAROT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            text-align: center;
+            background: linear-gradient(45deg, #1f4044, #99f2c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+        }
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background: #1e1e1e;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+        th, td {
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            padding: 10px;
+        }
+        th {
+            background: linear-gradient(45deg, #3a6073, #16222a);
+            color: white;
+            font-size: 18px;
+        }
+        td {
+            font-size: 16px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            margin: 6px 0;
+            border: 1px solid #3a3a3a;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        /* Button Styling */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        button {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            background: linear-gradient(45deg, #4e54c8, #8f94fb);
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #8f94fb, #4e54c8);
+            transform: translateY(-2px);
+        }
+
+          /* Clear Button Styling */
+    .clearTable button {
+        background: linear-gradient(45deg, #4b4a4a, #ff3c00);
+        color: #121212;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s;
+    }
+    .clearTable button:hover {
+        background: linear-gradient(45deg, #771d1d, #ff0000); /* Reverse gradient on hover */
+        box-shadow: 0 6px 15px rgb(164, 170, 146); /* Stronger glow */
+        transform: translateY(-2px); /* Lift button on hover */
+    }
+       
+     /* Animation Class for Cleared State */
+     .cleared {
+        background: linear-gradient(45deg, #e0e0e0, #999999);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.5);
+        color: #121212;
+        animation: fadeInOut 2s forwards;
+    }
+
+   
+/* Footer styles */
+footer {
+    background: linear-gradient(45deg, #3a6073, #000000);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 4px 0;
+    margin-top: 26px; /* Push footer to the bottom */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    letter-spacing: 0.5px
+}
+
+footer img {
+    width: 143px; /* Adjust logo size */
+    height: auto;
+    display: block;
+    margin: 0 auto 0px; /* Center logo with spacing */
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.3rem; /* Smaller text for copyright */
+         }
+        
+        
+    </style>
+</head>
+<body>
+
+<h1>Calculate Statistics</h1>
+
+<h2>Group 1: Class Interval and Frequency</h2>
+<p>Enter the class intervals and frequencies below:</p>
+
+<table class="input-table" id="input-table">
+    <tr>
+        <th>Class Interval</th>
+        <th>Frequency (F)</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="class0" placeholder="e.g., 0-10" onchange="setInitialClassInterval()"></td>
+        <td><input type="number" id="frequency0" min="0" oninput="addRowIfNeeded(0)"></td>
+    </tr>
+</table>
+
+<div class="button-container">
+    <button onclick="calculateMean()">Calculate Mean</button>
+    <button onclick="calculateMedian()">Calculate Median</button>
+    <button onclick="calculateMode()">Calculate Mode</button>
+    <button onclick="calculateSDFromMedian()">Calculate SD From Median</button>
+</div>
+
+<h2>Group 2: Xi and Fi Values</h2>
+<p>Enter Xi and Fi values separately for simple standard deviation calculation:</p>
+
+<table class="input-table" id="xi-fi-table">
+    <tr>
+        <th>Xi</th>
+        <th>Fi</th>
+    </tr>
+    <tr>
+        <td><input type="number" id="xi0"></td>
+        <td><input type="number" id="fi0" min="0" oninput="addXiFiRowIfNeeded(0)"></td>
+    </tr>
+</table>
+<div class="button-container">
+    <button onclick="calculateSimpleStandardDeviation()">Calculate Simple SD</button>
+</div>
+
+<h2>Group 3: Individual Numbers</h2>
+<p>Enter individual numbers separated by commas:</p>
+<input type="text" id="individualNumbers" placeholder="Enter numbers separated by commas">  
+<div class="button-container">
+    <button onclick="calculateSDFromIndividualNumbers()">Calculate SD from Individual Numbers</button>
+</div>
+
+<!-- Clear Button -->
+<div class="clearTable" style="text-align: center; margin-top: 20px;">
+    <button onclick="clearTable()">Clear</button>
+</div>
+
+<div id="output-section"></div>
+
+<footer>
+    <b><p>&copy; <span id="year"></span> M.J.J.B. All Rights Reserved.</p></b>
+  <img src="https://raw.githubusercontent.com/MJJB-INTERNATIONAL/MJJBimge/1baef02cf41529aff671d9ce9350107ecb6d127c/MJJB8w.svg">
+  
+</footer>
+
+<script>
+    // ... (rest of your JavaScript code)
+ let rowCount = 1;
+ let xiFiRowCount = 1;
+ let classWidth = 0;
+
+ function setInitialClassInterval() {
+     const classIntervalInput = document.getElementById('class0').value;
+     const [lowerLimit, upperLimit] = classIntervalInput.split("-").map(Number);
+
+     if (isNaN(lowerLimit) || isNaN(upperLimit) || lowerLimit >= upperLimit) {
+         alert("Please enter a valid class interval in the format 'lower-upper' (e.g., 0-10).");
+         document.getElementById('class0').value = '';
+         return;
+     }
+
+     classWidth = upperLimit - lowerLimit;
+     addRowIfNeeded(0);
+ }
+
+ function addRowIfNeeded(rowIndex) {
+     const frequencyInput = document.getElementById(`frequency${rowIndex}`);
+     const frequency = Number(frequencyInput.value);
+
+     if (frequency > 0 && rowIndex === rowCount - 1 && classWidth > 0) {
+         const lastClass = document.getElementById(`class${rowIndex}`).value;
+         const [lowerLimit, upperLimit] = lastClass.split("-").map(Number);
+
+         const newLowerLimit = upperLimit;
+         const newUpperLimit = upperLimit + classWidth;
+         const newClassInterval = `${newLowerLimit}-${newUpperLimit}`;
+
+         const table = document.getElementById("input-table");
+         const row = table.insertRow(rowCount + 1);
+         row.innerHTML = `
+             <td><input type="text" id="class${rowCount}" value="${newClassInterval}" readonly></td>
+             <td><input type="number" id="frequency${rowCount}" min="0" oninput="addRowIfNeeded(${rowCount})"></td>
+         `;
+
+         rowCount++;
+     }
+ }
+
+ function addXiFiRowIfNeeded(rowIndex) {
+     const fiInput = document.getElementById(`fi${rowIndex}`);
+     const fi = Number(fiInput.value);
+
+     if (fi > 0 && rowIndex === xiFiRowCount - 1) {
+         const table = document.getElementById("xi-fi-table");
+         const row = table.insertRow(xiFiRowCount + 1);
+         row.innerHTML = `
+             <td><input type="number" id="xi${xiFiRowCount}"></td>
+             <td><input type="number" id="fi${xiFiRowCount}" min="0" oninput="addXiFiRowIfNeeded(${xiFiRowCount})"></td>
+         `;
+
+         xiFiRowCount++;
+     }
+ }
+
+ function calculateMean() {
+     let totalF = 0;
+     let totalFiDi = 0;
+     let cumulativeFrequency = 0;
+     let midpoints = [];
+     let frequencies = [];
+     let cfValues = [];
+
+     const tableHtmlStart = `
+         <table>
+             <tr>
+                 <th>Class</th>
+                 <th>Fi</th>
+                 <th>Xi</th>
+                 <th>Ui</th>
+                 <th>FiUi</th>
+                 <th>Cf (Optional)</th>
+             </tr>`;
+
+     let tableRows = '';
+
+     for (let i = 0; i < rowCount; i++) {
+         const classInterval = document.getElementById(`class${i}`).value;
+         const frequency = Number(document.getElementById(`frequency${i}`).value);
+
+         if (isNaN(frequency) || frequency < 0) {
+             alert("Please enter valid frequencies for all rows.");
+             return;
+         }
+
+         if (frequency === 0) continue;
+
+         const [lowerLimit, upperLimit] = classInterval.split("-").map(Number);
+         const midpoint = (lowerLimit + upperLimit) / 2;
+
+         midpoints.push(midpoint);
+         frequencies.push(frequency);
+         totalF += frequency;
+
+         cumulativeFrequency += frequency;
+         cfValues.push(cumulativeFrequency);
+     }
+
+     const A = midpoints[Math.floor(midpoints.length / 2)];
+     const classWidth = midpoints[1] - midpoints[0];
+
+     for (let i = 0; i < midpoints.length; i++) {
+         const classInterval = document.getElementById(`class${i}`).value;
+         const frequency = frequencies[i];
+         const midpoint = midpoints[i];
+
+         const Di = (midpoint - A) / classWidth;
+         const FiDi = frequency * Di;
+
+         totalFiDi += FiDi;
+
+         tableRows += `
+             <tr>
+                 <td>${classInterval}</td>
+                 <td>${frequency}</td>
+                 <td>${midpoint}</td>
+                 <td>${Di}</td>
+                 <td>${FiDi}</td>
+                 <td>${cfValues[i]}</td>
+             </tr>`;
+     }
+
+     const mean = A + (totalFiDi / totalF) * classWidth;
+
+     const tableHtmlEnd = `
+         <tr>
+             <td colspan="5">ΣF = ${totalF}</td>
+             <td>ΣFiUi = ${totalFiDi}</td>
+         </tr>
+         <tr>
+             <td colspan="6"> <math xmlns="http://www.w3.org/1998/Math/MathML">
+<menclose notation="top">
+ <mi>x</mi>
+</menclose>
+<mo>=</mo>
+<mi>A</mi>
+<mo>+</mo>
+<mi>h</mi>
+<mfenced>
+ <mfrac>
+   <mrow>
+     <mo>&#x2211;</mo>
+     <msub>
+       <mi>f</mi>
+       <mi>i</mi>
+     </msub>
+     <msub>
+       <mi>u</mi>
+       <mi>i</mi>
+     </msub>
+   </mrow>
+   <mrow>
+     <mo>&#x2211;</mo>
+     <msub>
+       <mi>f</mi>
+       <mi>i</mi>
+     </msub>
+   </mrow>
+ </mfrac>
+</mfenced>
+</math></td>
+         </tr>
+         <tr>
+             <td colspan="6">Mean = ${A} + (${totalFiDi} / ${totalF}) × ${classWidth} = ${mean}</td>
+         </tr>
+         </table>`;
+
+     document.getElementById("output-section").innerHTML = tableHtmlStart + tableRows + tableHtmlEnd;
+ }
+
+ function clearTable() {
+     document.getElementById("input-table").innerHTML = `
+         <tr>
+             <th>Class Interval</th>
+             <th>Frequency (F)</th>
+         </tr>
+         <tr>
+             <td><input type="text" id="class0" placeholder="e.g., 0-10" onchange="setInitialClassInterval()"></td>
+             <td><input type="number" id="frequency0" min="0" oninput="addRowIfNeeded(0)"></td>
+         </tr>
+     `;
+
+     rowCount = 1;
+     classWidth = 0;
+     document.getElementById("output-section").innerHTML = "";
+ }
+ 
+function calculateMedian() {
+ let totalF = 0;
+ let cumulativeFrequency = 0;
+ let medianClassIndex = -1;
+
+ let frequencies = [];
+ let cumulativeFrequencies = [];
+ let classes = [];
+
+ // Calculate total frequency and cumulative frequencies, excluding 0 frequencies
+ for (let i = 0; i < rowCount; i++) {
+     const classInterval = document.getElementById(`class${i}`).value;
+     const frequency = Number(document.getElementById(`frequency${i}`).value);
+     
+     if (isNaN(frequency) || frequency < 0) {
+         alert("Please enter valid frequencies for all rows.");
+         return;
+     }
+
+     if (frequency === 0) continue; // Skip rows with frequency 0
+
+     classes.push(classInterval);
+     frequencies.push(frequency);
+     totalF += frequency;
+
+     cumulativeFrequency += frequency;
+     cumulativeFrequencies.push(cumulativeFrequency);
+ }
+
+ const N = totalF;
+ const medianLimit = N / 2;
+
+ // Find the median class
+ for (let i = 0; i < frequencies.length; i++) {
+     if (cumulativeFrequencies[i] >= medianLimit) {
+         medianClassIndex = i;
+         break;
+     }
+ }
+
+ if (medianClassIndex === -1) {
+     alert("Unable to find the median class. Please check your input.");
+     return;
+ }
+
+ // Calculate values for the median formula
+ const medianClassInterval = classes[medianClassIndex];
+ const [lowerLimit, upperLimit] = medianClassInterval.split("-").map(Number);
+ const l = lowerLimit;
+ const f = frequencies[medianClassIndex];
+ const cf = cumulativeFrequencies[medianClassIndex - 1] || 0;
+ const h = classWidth;
+
+ const median = l + ((medianLimit - cf) / f) * h;
+
+ // Display the data in a table format
+ let tableHtml = `
+     <h2>Median Calculation</h2>
+     <table>
+         <tr>
+             <th>Class</th>
+             <th>F</th>
+             <th>Cf</th>
+         </tr>`;
+
+ for (let i = 0; i < frequencies.length; i++) {
+     tableHtml += `
+         <tr>
+             <td>${classes[i]}</td>
+             <td>${frequencies[i]}</td>
+             <td>${cumulativeFrequencies[i]}</td>
+         </tr>`;
+ }
+
+ // Add the median formula and result to the table
+ tableHtml += `
+     <tr>
+         <td colspan="3"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+ <mtr>
+   <mtd>
+     <mi>M</mi>
+     <mi>e</mi>
+     <mi>d</mi>
+     <mi>i</mi>
+     <mi>a</mi>
+     <mi>n</mi>
+     <mo>=</mo>
+     <mi>l</mi>
+     <mo>+</mo>
+     <mrow data-mjx-texclass="INNER">
+       <mo data-mjx-texclass="OPEN">(</mo>
+       <mfrac>
+         <mrow>
+           <mfrac>
+             <mi>n</mi>
+             <mn>2</mn>
+           </mfrac>
+           <mo>&#x2212;</mo>
+           <mi>c</mi>
+           <mi>f</mi>
+         </mrow>
+         <mi>f</mi>
+       </mfrac>
+       <mo data-mjx-texclass="CLOSE">)</mo>
+     </mrow>
+     <mo>&#xD7;</mo>
+     <mi>h</mi>
+   </mtd>
+ </mtr>
+</mtable>
+</math></td>
+     </tr>
+     <tr>
+         <td colspan="3">Median = ${l} + [(${N}/2 - ${cf}) / ${f}] × ${h} = ${median}</td>
+     </tr>
+     </table>`;
+
+ document.getElementById("output-section").innerHTML += tableHtml;
+}  
+ 
+function calculateMode() {
+ let frequencies = [];
+ let classes = [];
+ 
+ // Gather data, filtering out rows with frequency 0
+ for (let i = 0; i < rowCount; i++) {
+     const classInterval = document.getElementById(`class${i}`).value;
+     const frequency = Number(document.getElementById(`frequency${i}`).value);
+     
+     if (isNaN(frequency) || frequency < 0) {
+         alert("Please enter valid frequencies for all rows.");
+         return;
+     }
+
+     if (frequency === 0) continue; // Skip rows with frequency 0
+
+     classes.push(classInterval);
+     frequencies.push(frequency);
+ }
+
+ // Find the modal class (class with the maximum frequency)
+ let maxFrequency = Math.max(...frequencies);
+ let modalClassIndex = frequencies.indexOf(maxFrequency);
+
+ if (modalClassIndex === -1) {
+     alert("Unable to find the modal class. Please check your input.");
+     return;
+ }
+
+ // Extract necessary values for the mode formula
+ const modalClassInterval = classes[modalClassIndex];
+ const [lowerLimit, upperLimit] = modalClassInterval.split("-").map(Number);
+ const l = lowerLimit;
+ const f1 = frequencies[modalClassIndex];
+ const f0 = frequencies[modalClassIndex - 1] || 0;
+ const f2 = frequencies[modalClassIndex + 1] || 0;
+ const h = classWidth;
+
+ // Calculate mode using the formula
+ const mode = l + ((f1 - f0) / (2 * f1 - f0 - f2)) * h;
+
+ // Display the mode calculation in a table format
+ let tableHtml = `
+     <h2>Mode Calculation</h2>
+     <table>
+         <tr>
+             <th>Class</th>
+             <th>F</th>
+         </tr>`;
+
+ for (let i = 0; i < frequencies.length; i++) {
+     tableHtml += `
+         <tr>
+             <td>${classes[i]}</td>
+             <td>${frequencies[i]}</td>
+         </tr>`;
+ }
+
+ // Add the mode formula and result to the table
+ tableHtml += `
+     <tr>
+         <td colspan="2"> = l + h <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+ <mo>(</mo>
+ <mfrac>
+   <mrow>
+     <msub>
+       <mi>f</mi>
+       <mrow class="MJX-TeXAtom-ORD">
+         <mn>1</mn>
+       </mrow>
+     </msub>
+     <mo>&#x2212;<!-- − --></mo>
+     <msub>
+       <mi>f</mi>
+       <mrow class="MJX-TeXAtom-ORD">
+         <mn>0</mn>
+       </mrow>
+     </msub>
+   </mrow>
+   <mrow>
+     <mn>2</mn>
+     <msub>
+       <mi>f</mi>
+       <mrow class="MJX-TeXAtom-ORD">
+         <mn>1</mn>
+       </mrow>
+     </msub>
+     <mo>&#x2212;<!-- − --></mo>
+     <msub>
+       <mi>f</mi>
+       <mrow class="MJX-TeXAtom-ORD">
+         <mn>0</mn>
+       </mrow>
+     </msub>
+     <mo>&#x2212;<!-- − --></mo>
+     <msub>
+       <mi>f</mi>
+       <mrow class="MJX-TeXAtom-ORD">
+         <mn>2</mn>
+       </mrow>
+     </msub>
+   </mrow>
+ </mfrac>
+ <mo>)</mo>
+</mrow>
+</math>
+</td>
+     </tr>
+     <tr>
+         <td colspan="2">Mode = ${l} + [(${f1} - ${f0}) / (2 × ${f1} - ${f0} - ${f2})] × ${h} = ${mode}</td>
+     </tr>
+     </table>`;
+
+ document.getElementById("output-section").innerHTML += tableHtml;
+}   
+function calculateSDFromMedian() {
+     let totalF = 0;
+     let totalFiDi = 0;
+     let totalFiDiSquared = 0;
+     let midpoints = [];
+     let frequencies = [];
+     
+     const tableHtmlStart = `
+         <table>
+             <tr>
+                 <th>Class</th>
+                 <th>F</th>
+                 <th>Xi</th>
+                 <th>Di</th>
+                 <th>FiDi</th>
+                 <th>Di²</th>
+                 <th>FiDi²</th>
+             </tr>`;
+
+     let tableRows = '';
+
+     for (let i = 0; i < rowCount; i++) {
+         const classInterval = document.getElementById(`class${i}`).value;
+         const frequency = Number(document.getElementById(`frequency${i}`).value);
+
+         if (isNaN(frequency) || frequency < 0) {
+             alert("Please enter valid frequencies for all rows.");
+             return;
+         }
+
+         if (frequency === 0) continue;
+
+         const [lowerLimit, upperLimit] = classInterval.split("-").map(Number);
+         const midpoint = (lowerLimit + upperLimit) / 2;
+         
+         midpoints.push(midpoint);
+         frequencies.push(frequency);
+         totalF += frequency;
+     }
+
+     const A = midpoints[Math.floor(midpoints.length / 2)];
+
+     for (let i = 0; i < midpoints.length; i++) {
+         const classInterval = document.getElementById(`class${i}`).value;
+         const frequency = frequencies[i];
+         const midpoint = midpoints[i];
+         
+         const Di = midpoint - A;
+         const FiDi = frequency * Di;
+         const DiSquared = Di * Di;
+         const FiDiSquared = frequency * DiSquared;
+
+         totalFiDi += FiDi;
+         totalFiDiSquared += FiDiSquared;
+
+         tableRows += `
+             <tr>
+                 <td>${classInterval}</td>
+                 <td>${frequency}</td>
+                 <td>${midpoint}</td>
+                 <td>${Di / 10}</td>
+                 <td>${FiDi / 10}</td>
+                 <td>${DiSquared / 100}</td>
+                 <td>${FiDiSquared / 100}</td>
+             </tr>`;
+     }
+
+     const n = totalF;
+     const C = classWidth;
+
+     const SD = Math.sqrt((totalFiDiSquared / n) - Math.pow((totalFiDi / n), 2)) * C;
+
+     const tableHtmlEnd = `
+         <tr>
+             <td colspan="4">ΣFiDi = ${totalFiDi / 10}</td>
+             <td colspan="3">ΣFiDi² = ${totalFiDiSquared / 100}</td>
+         </tr>
+         <tr>
+             <td colspan="7">SD= √[(ΣFiDi² / n) - (ΣFiDi / n)²] × h</td>
+         </tr>
+         <tr>
+             <td colspan="7">SD = √[(${totalFiDiSquared / 100} / ${n}) - (${totalFiDi / 10} / ${n})²] × ${C} = ${SD.toFixed(1) / 10}</td>
+         </tr>
+         </table>`;
+
+     document.getElementById("output-section").innerHTML = tableHtmlStart + tableRows + tableHtmlEnd;
+ }
+
+ function clearTable() {
+     document.getElementById("input-table").innerHTML = `
+         <tr>
+             <th>Class Interval</th>
+             <th>Frequency (F)</th>
+         </tr>
+         <tr>
+             <td><input type="text" id="class0" placeholder="e.g., 0-10" onchange="setInitialClassInterval()"></td>
+             <td><input type="number" id="frequency0" min="0" oninput="addRowIfNeeded(0)"></td>
+         </tr>
+     `;
+
+     rowCount = 1;
+     classWidth = 0;
+     document.getElementById("output-section").innerHTML = "";
+ }
+ 
+ function calculateSimpleStandardDeviation() {
+     let xiValues = [];
+     let fiValues = [];
+     let totalFi = 0;
+     let totalFiXi = 0;
+     let totalFiXiSquared = 0;
+
+     const tableHtmlStart = `
+         <table>
+             <tr>
+                 <th>Xi</th>
+                 <th>Fi</th>
+                 <th>FiXi</th>
+                 <th>Xi²</th>
+                 <th>FiXi²</th>
+             </tr>`;
+
+     let tableRows = '';
+
+     // Collect Xi and Fi values
+     for (let i = 0; i < xiFiRowCount; i++) {
+         const xi = Number(document.getElementById(`xi${i}`).value);
+         const fi = Number(document.getElementById(`fi${i}`).value);
+
+         if (isNaN(xi) || isNaN(fi) || fi < 0) {
+             alert("Please enter valid numbers for Xi and Fi.");
+             return;
+         }  
+         xiValues.push(xi);
+         fiValues.push(fi);
+         totalFi += fi;
+
+         const fiXi = fi * xi;
+         const xiSquared = xi * xi;
+         const fiXiSquared = fi * xiSquared;
+
+         totalFiXi += fiXi;
+         totalFiXiSquared += fiXiSquared;
+
+         tableRows += `
+             <tr>
+                 <td>${xi}</td>
+                 <td>${fi}</td>
+                 <td>${fiXi}</td>
+                 <td>${xiSquared}</td>
+                 <td>${fiXiSquared}</td>
+             </tr>`;
+     }
+     const mean = totalFiXi / totalFi;
+     const variance = (totalFiXiSquared / totalFi) - (mean * mean);
+     const standardDeviation = Math.sqrt(variance);
+
+     const tableHtmlEnd = `
+         <tr>
+             <td colspan="2">ΣFi = ${totalFi}</td>
+             <td>ΣFiXi = ${totalFiXi}</td>
+             <td></td>
+             <td>ΣFiXi² = ${totalFiXiSquared}</td>
+         </tr>
+         <tr>
+             <td colspan="5">SD = √[(ΣFiXi² / ΣFi) - (ΣFiXi / ΣFi)²]</td>
+         </tr>
+         <tr>
+             <td colspan="5">SD = √[(${totalFiXiSquared} / ${totalFi}) - (${totalFiXi} / ${totalFi})²] = ${standardDeviation.toFixed(2)}</td>
+         </tr>
+         </table>`;
+
+     document.getElementById("output-section").innerHTML = tableHtmlStart + tableRows + tableHtmlEnd;
+ } 
+ 
+ function calculateSDFromIndividualNumbers() {
+ const numbersInput = document.getElementById("individualNumbers").value;
+ const numbers = numbersInput.split(",").map(Number);
+
+ // Check for invalid input
+ if (numbers.some(isNaN)) {
+     alert("Please enter valid numbers separated by commas.");
+     return;
+ }
+
+ // Calculate the mean
+ const n = numbers.length;
+ const sum = numbers.reduce((acc, num) => acc + num, 0);
+ const mean = sum / n;
+
+ // Calculate the sum of squared differences from the mean
+ const sumSquaredDiff = numbers.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0);
+
+ // Calculate the standard deviation
+ const sd = Math.sqrt(sumSquaredDiff / n);
+
+ // Create the table
+ let tableHtml = `
+     <h2>Standard Deviation from Individual Numbers</h2>
+     <table>
+         <tr>
+             <th>Xi</th>
+             <th>Xi - X̄</th>
+             <th>(Xi - X̄)²</th>
+         </tr>`;
+
+ numbers.forEach(num => {
+     tableHtml += `
+         <tr>
+             <td>${num}</td>
+             <td>${(num - mean).toFixed(2)}</td>
+             <td>${Math.pow(num - mean, 2).toFixed(2)}</td>
+         </tr>`;
+ });
+ tableHtml += `
+     <tr>
+         <td colspan="4">Σ(Xi - X̄)² = ${sumSquaredDiff.toFixed(2)}</td>
+         <td></td>
+     </tr>
+     <tr>
+         <td colspan="4">Σ(Xi - X̄)² / n = ${sumSquaredDiff.toFixed(2)} / ${n} = ${(sumSquaredDiff / n).toFixed(2)}</td>
+         <td></td>
+     </tr>
+     <tr>
+         <td colspan="4"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+ <mtr>
+   <mtd>
+     <mi>SD</mi>
+     <mo>=</mo>
+     <msqrt>
+       <mfrac>
+         <mrow>
+           <mo data-mjx-texclass="OP">&#x2211;</mo>
+           <mo stretchy="false">(</mo>
+           <mi>X</mi>
+           <mo>&#x2212;</mo>
+           <mrow data-mjx-texclass="ORD">
+             <mover>
+               <mi>X</mi>
+               <mo stretchy="false">&#xAF;</mo>
+             </mover>
+           </mrow>
+           <msup>
+             <mo stretchy="false">)</mo>
+             <mrow data-mjx-texclass="ORD">
+               <mn>2</mn>
+             </mrow>
+           </msup>
+         </mrow>
+         <mrow>
+           <mi>n</mi>
+         </mrow>
+       </mfrac>
+     </msqrt>
+   </mtd>
+ </mtr>
+</mtable>
+</math></td>
+         <td></td>
+     </tr>
+     <tr>
+         <td colspan="4">SD = √[${(sumSquaredDiff / n).toFixed(2)}] = ${sd.toFixed(2)}</td>
+         <td></td>
+     </tr>
+     </table>`;
+
+ document.getElementById("output-section").innerHTML += tableHtml;
+}
+ // Prevent right-click, Ctrl+U, and Developer Tools shortcuts
+ document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'J' || e.key === 'j')) {
+        e.preventDefault();
+        alert('Error In Opening_Error Code:69');
+    }
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();
+        alert('Unable To Open_E');
+    }
+});
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Error_Not Clicked_Code:89');
+});
+
+ </script>
+</body>
+</html>
