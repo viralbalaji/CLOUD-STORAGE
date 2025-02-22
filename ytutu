@@ -1,0 +1,44 @@
+#include <iostream>
+#include <chrono>
+#include <iomanip>
+#include <cmath>
+
+int main() {
+    std::string receiver;
+    std::cout << "Enter receiver's name: ";
+    std::getline(std::cin, receiver);
+   
+    int d1, m1, y1, d2, m2, y2;
+    std::cout << "Enter start date (DD MM YYYY): ";
+    std::cin >> d1 >> m1 >> y1;
+    std::cout << "Enter end date (DD MM YYYY): ";
+    std::cin >> d2 >> m2 >> y2;
+   
+    std::chrono::system_clock::time_point start_date = std::chrono::system_clock::from_time_t(std::mktime(new std::tm{0,0,0,d1,m1-1,y1-1900}));
+    std::chrono::system_clock::time_point end_date = std::chrono::system_clock::from_time_t(std::mktime(new std::tm{0,0,0,d2,m2-1,y2-1900}));
+   
+    auto duration = std::chrono::duration_cast<std::chrono::duration<int, std::ratio<86400>>>(end_date - start_date).count();
+   
+    std::cout << "Number of days: " << duration << std::endl;
+   
+    double principal, rate ;
+    std::cout << "Enter principal amount: ";
+    std::cin >> principal;
+    std::cout << "Enter annual interest rate: ";
+    std::cin >> rate;
+   
+    double intv = principal * rate / 100;
+    double intvpd = intv / 30;
+    double intvttl = intvpd * duration + principal;
+    double cint = intv * 10 /100;
+    double cintv = cint ;
+    double cintvttl = intvttl + cintv;
+   
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Interest Value: " << intvttl - principal <<  std::endl;
+    std::cout << "Total Amount After Intrest: " << intvttl << std::endl;
+    std::cout << "Compounded Interest Value: " << cintv << std::endl;
+    std::cout << "Total Amount After Compounded Intrest: " << cintvttl << std::endl;
+   
+    return 0;
+}
