@@ -1,0 +1,908 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 4310
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 813.5435433070865656 Td
+(<!DOCTYPE html>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 793.7010236220472734 Td
+(<html lang="en">) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 773.8585039370078675 Td
+(<head>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 754.0159842519684616 Td
+(    <meta charset="UTF-8">) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 734.1734645669291695 Td
+(    <meta name="viewport" content="width=device-width, initial-scale=1.0">) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 714.3309448818897636 Td
+(    <title>Code to PDF Converter</title>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 694.4884251968503577 Td
+(    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/vs2015.min.css">) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 674.6459055118109518 Td
+(    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 654.8033858267716596 Td
+(    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 634.9608661417322537 Td
+(    <style>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 615.1183464566928478 Td
+(        body {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 595.2758267716535556 Td
+(            font-family: Arial, sans-serif;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 575.4333070866141497 Td
+(            display: flex;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 555.5907874015747439 Td
+(            flex-direction: column;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 535.748267716535338 Td
+(            align-items: center;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 515.9057480314959321 Td
+(            justify-content: center;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 496.0632283464566399 Td
+(            height: 100vh;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 476.2207086614172908 Td
+(            background-color: #1e1e1e;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 456.378188976377885 Td
+(            color: white;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 436.5356692913385359 Td
+(        }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 416.69314960629913 Td
+(        textarea {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 396.850629921259781 Td
+(            width: 80%;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 377.0081102362204319 Td
+(            height: 200px;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 357.1655905511810261 Td
+(            background-color: #252526;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 337.323070866141677 Td
+(            color: #d4d4d4;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 317.480551181102328 Td
+(            border: none;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 297.6380314960629221 Td
+(            padding: 10px;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 277.7955118110235162 Td
+(            font-size: 16px;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 257.952992125984224 Td
+(            font-family: monospace;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 238.1104724409448181 Td
+(        }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 218.2679527559054122 Td
+(        input, button {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 198.4254330708660063 Td
+(            width: 80%;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 178.5829133858267141 Td
+(            padding: 10px;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 158.7403937007873083 Td
+(            margin: 10px 0;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 138.8978740157479024 Td
+(            font-size: 16px;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 119.0553543307086102 Td
+(        }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 99.2128346456692043 Td
+(        button {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 79.3703149606297984 Td
+(            background-color: #007acc;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 59.5277952755905062 Td
+(            color: white;) Tj
+ET
+endstream
+endobj
+5 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 6 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 4727
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 813.5435433070865656 Td
+(            border: none;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 793.7010236220472734 Td
+(            cursor: pointer;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 773.8585039370078675 Td
+(        }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 754.0159842519684616 Td
+(        button:hover {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 734.1734645669291695 Td
+(            background-color: #005f99;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 714.3309448818897636 Td
+(        }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 694.4884251968503577 Td
+(    </style>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 674.6459055118109518 Td
+(</head>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 654.8033858267716596 Td
+(<body>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 634.9608661417322537 Td
+(    <h2>Code to PDF Converter</h2>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 615.1183464566928478 Td
+(    <textarea id="code" placeholder="Enter your code here..."></textarea>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 595.2758267716535556 Td
+(    <input type="text" id="filename" placeholder="Enter file name \(optional\)" hidden>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 575.4333070866141497 Td
+(    <button id="downloadBtn" hidden>Download PDF</button>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 555.5907874015747439 Td
+(    ) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 535.748267716535338 Td
+(    <script>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 515.9057480314959321 Td
+(        document.getElementById\('code'\).focus\(\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 496.0632283464566399 Td
+(        document.getElementById\('code'\).addEventListener\('keydown', function\(event\) {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 476.2207086614172908 Td
+(            if \(event.key === 'Enter'\) {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 456.378188976377885 Td
+(                event.preventDefault\(\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 436.5356692913385359 Td
+(                document.getElementById\('filename'\).removeAttribute\('hidden'\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 416.69314960629913 Td
+(                document.getElementById\('filename'\).focus\(\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 396.850629921259781 Td
+(            }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 377.0081102362204319 Td
+(        }\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 357.1655905511810261 Td
+(        document.getElementById\('filename'\).addEventListener\('keydown', function\(event\) {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 337.323070866141677 Td
+(            if \(event.key === 'Enter'\) {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 317.480551181102328 Td
+(                event.preventDefault\(\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 297.6380314960629221 Td
+(                document.getElementById\('downloadBtn'\).removeAttribute\('hidden'\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 277.7955118110235162 Td
+(                document.getElementById\('downloadBtn'\).focus\(\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 257.952992125984224 Td
+(            }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 238.1104724409448181 Td
+(        }\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 218.2679527559054122 Td
+(        document.getElementById\('downloadBtn'\).addEventListener\('click', function\(\) {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 198.4254330708660063 Td
+(            const { jsPDF } = window.jspdf;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 178.5829133858267141 Td
+(            const pdf = new jsPDF\({ orientation: 'p', unit: 'mm', format: 'a4' }\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 158.7403937007873083 Td
+(            let code = document.getElementById\('code'\).value;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 138.8978740157479024 Td
+(            let fileName = document.getElementById\('filename'\).value || 'code';) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 119.0553543307086102 Td
+(            let lines = code.split\('\\n'\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 99.2128346456692043 Td
+(            let y = 10;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 79.3703149606297984 Td
+(            pdf.setFont\('Courier'\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 59.5277952755905062 Td
+(            pdf.setFontSize\(10\);) Tj
+ET
+endstream
+endobj
+7 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 8 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 1346
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 813.5435433070865656 Td
+(            lines.forEach\(line => {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 793.7010236220472734 Td
+(                if \(y > 280\) {) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 773.8585039370078675 Td
+(                    pdf.addPage\(\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 754.0159842519684616 Td
+(                    y = 10;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 734.1734645669291695 Td
+(                }) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 714.3309448818897636 Td
+(                pdf.text\(10, y, line\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 694.4884251968503577 Td
+(                y += 7;) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 674.6459055118109518 Td
+(            }\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 654.8033858267716596 Td
+(            pdf.save\(`${fileName}.pdf`\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 634.9608661417322537 Td
+(        }\);) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 615.1183464566928478 Td
+(    </script>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 595.2758267716535556 Td
+(</body>) Tj
+ET
+BT
+/F5 10 Tf
+11.5 TL
+0 g
+28.3464566929133888 575.4333070866141497 Td
+(</html>) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R 5 0 R 7 0 R ]
+/Count 3
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+19 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+20 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+21 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+22 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 9 0 R
+/F2 10 0 R
+/F3 11 0 R
+/F4 12 0 R
+/F5 13 0 R
+/F6 14 0 R
+/F7 15 0 R
+/F8 16 0 R
+/F9 17 0 R
+/F10 18 0 R
+/F11 19 0 R
+/F12 20 0 R
+/F13 21 0 R
+/F14 22 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+23 0 obj
+<<
+/Producer (jsPDF 2.5.1)
+/CreationDate (D:20250223233724+05'30')
+>>
+endobj
+24 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 25
+0000000000 65535 f 
+0000010965 00000 n 
+0000012798 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000004514 00000 n 
+0000004651 00000 n 
+0000009430 00000 n 
+0000009567 00000 n 
+0000011034 00000 n 
+0000011159 00000 n 
+0000011290 00000 n 
+0000011424 00000 n 
+0000011562 00000 n 
+0000011686 00000 n 
+0000011815 00000 n 
+0000011947 00000 n 
+0000012083 00000 n 
+0000012211 00000 n 
+0000012338 00000 n 
+0000012467 00000 n 
+0000012600 00000 n 
+0000012702 00000 n 
+0000013050 00000 n 
+0000013136 00000 n 
+trailer
+<<
+/Size 25
+/Root 24 0 R
+/Info 23 0 R
+/ID [ <127E748B9735793EDB6D8F35A8B8DBB4> <127E748B9735793EDB6D8F35A8B8DBB4> ]
+>>
+startxref
+13240
+%%EOF
