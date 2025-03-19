@@ -1,0 +1,33 @@
+I WANT TO CREATE AUTOMATION FOR PICK & PLACE LID FROM INJECTION MOULDING MACHINE, USING ARDUINO MEGA 2560 r3'
+-Now give me full ready to use program 
+For below functions:
+
+
+- I AM USING DIGITAL STEPER DRIVER "DM542"
+
+-1st: The Steper Motor1 Will Send The linear guide Inside Of Machine For My Specified Time & Speed After Mould Open (Limit switch triggered)
+
+
+-2nd: At head of linear guide there is vacume and Lid picker, Now I want to push a air cylinder1 to LID, so it catch the lid, after 1st function done, & for my specified time. and after my specified time send air to another valve, so it came back to its original position.
+
+-3rd: vacume Should be Start WITH 2nd function done, After my Specified time, for my specific time To pick lead.(Function done), 
+
+-4th: After 3rd Function Done, The Steper Motor1 Will Back The linear guide Back Out Of  Machine, After some time(my specified time) of 3rd function done. For My Specified Time & Speed. (OPPOSITE OF FUNCTION 1)
+
+
+-5th: I want to rotate the head of linear guide BY Steper Motor3,After some time(my specified time) of 4th function done. for my specified time,so VERTICALLY positioned LID transform to HORIZONTALLY to Place it on a metal plate.
+
+-6th: At head of linear guide, there is vacume and Lid picker, Now I want to push that to metal plate with the air cylinder1 which is placed on head AS YOU KNOW,After some time(my specified time) of 5th function done,for my specified time. 
+
+-7th: vacume Should be Released WITH 5th & 6th function done,After some time(my specified time) of 6th function done, for my specific time, Now The lead is Released.(Function done),
+
+-Now reset 5th & 6th & 7th function so it came to its default position. & 
+
+-start again after LIMIT SWITCH AGAIN TRIGGERED , 
+                       For Work Again 
+!!!
+
+- WHAT TO DO AFTER LIDS PLACED AT METAL PLATE : the metal plate will go inside as lid placed(COUNT BY SINGLE LID PLACED, ALSO GO STEP DOWN BY MOTOR4 AS LIDS PLACED, FOR MY SPECIFIED TIME, & SPEED. E.X: AFTER EVERY LID THE PLATE WILL GO INSIDE BY MOTOR4 @ SPEED OF 1000RPM & FOR 500 MS.) by steper motor4.
+-after 25 lids placed, an air cylinder2 will push that bunch of lids to conveyer belt.
+-and after pushing 25 lids THE motor4 & cylinder2 should be came to its original position immediately !! BUT AFTER CYLINDER2 PUSH BUNCH TO CONVEYER!
+
